@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title> AvoGato Mixplay playing Breezeblocks - Alt J </title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/5d4b21d19f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+	<nav>
+		<div class="circle">
+			<i class="fa-solid fa-angle-left"></i>
+		</div>
+
+			<div class="circle">
+				<i class="fa-sharp fa-solid fa-bars"></i>
+			</div>
+			<img src="media/altjcover.jpg" class="song-img">
+		<h1>Breezeblocks</h1>
+		<p>Alt J</p>
+
+		<audio id="song">
+			<source src="media/AltJBreezeblocks.mp3" type="audio/mpeg">
+		</audio>
+		<input type="range" value="0" id="progress">
+
+		<div class="controls">
+			<div><i class="fa-sharp fa-solid fa-backward"></i></div>
+			<div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+			<div><i class="fa-sharp fa-solid fa-forward"></i></div>
+		</div>
+	</nav>
+
+	<ul>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		
+		<li>1</li>
+		<li>1</li>
+	</ul>
+</div>
+
+<script>
+
+ let progress = document.getElementById("progress");
+ let song = document.getElementById("song");
+ let ctrlIcon = document.getElementById("ctrlIcon");
+
+ song.onloadedmetadata = function(){
+ 	progress.max = song.duration;
+ 	progress.value = song.currentTime;
+
+}
+
+function playPause(){
+	if(ctrlIcon.classList.contains("fa-pause")){
+			song.pause();
+			ctrlIcon.classList.remove("fa-pause");
+			ctrlIcon.classList.add("fa-play");
+		}
+		else{
+			song.play();
+			ctrlIcon.classList.add("fa-pause");
+			ctrlIcon.classList.remove("fa-play");
+		}
+}
+
+if (song.play()) {
+	setInterval(()=>{
+		progress.value = song.currentTime;
+	},500);
+}
+
+progress.onchange = function(){
+	song.play();
+	song.currentTime = progress.value;
+	ctrlIcon.classList.add("fa-pause");
+	ctrlIcon.classList.remove("fa-play");
+}
+
+</script>
+
+
+</body>
+</html>
