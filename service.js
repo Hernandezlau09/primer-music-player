@@ -8,21 +8,24 @@ axios.get('https://leonardoapi.onrender.com/songs')
 
             li.innerHTML = `
                         
-            <img src="${song.path.front}" alt=""> class:"h-16">
-            <li>
-            <p>${song.title}</p>
-            </li>
+            <img src="${song.path.front}" alt="" class="h-16">
+            <div>
+                <p>${song.title}</p>
+            </div>
 
         `
 
-        li.addEventListener('click', )
-    
-        document.getElementById("track-list").appendChild(li)
+        li.addEventListener('click', () => {
+            document.getElementById('song').setAttribute('src', song.path.audio)
+            document.getElementById('current-song-img').setAttribute("src", song.path.front)
+            document.getElementById('current-song-title').innerHTML = song.title
+            document.getElementById('current-song-author').innerHTML = song.author
 
+            
+        })
+        document.getElementById("track-list").appendChild(li)
         })
 
-
+        
     })
-
-
-    
+  

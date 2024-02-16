@@ -13,19 +13,17 @@
 	<nav>
 		<div class="circle">
 			<img src="media/Ellipse 1.jpg">
-			<h1>John Doe</h1>
-			<p>Ver Perfil</p>
 		</div>
 
 			<div class="circle">
 				<i class="fa-sharp fa-solid fa-bars"></i>
 			</div>
-			<img src="media/altjcover.jpg" class="song-img">
-		<h1>Breezeblocks</h1>
-		<p>Alt J</p>
+			<img src="media/altjcover.jpg" class="song-img" id="current-song-img">
+		<h1 id="current-song-title">Breezeblocks</h1>
+		<p id="current-song-author">Alt J</p>
 
-		<audio id="song">
-			<source src="media/AltJBreezeblocks.mp3" type="audio/mpeg">
+		<audio id="song" controls autoplay>
+			<!-- <source src="media/AltJBreezeblocks.mp3" type="audio/mpeg"> -->
 		</audio>
 		<input type="range" value="0" id="progress">
 
@@ -37,54 +35,15 @@
 	</nav>
 
 	<ul id="track-list">
-		<li>Sunny / Boney M</li>
+		<!-- <li>Sunny / Boney M</li>
 		<li>Daft Punk / Get Lucky</li>
 		<li>One Republic / Counting Stars</li>
 		
 		<li>The Strokes / The Adults Are Talking</li>
-		<li>The Beatles / Strawberry Fields Forever</li>
+		<li>The Beatles / Strawberry Fields Forever</li> -->
 	</ul>
 </div>
 
-<script>
-
- let progress = document.getElementById("progress");
- let song = document.getElementById("song");
- let ctrlIcon = document.getElementById("ctrlIcon");
-
- song.onloadedmetadata = function(){
- 	progress.max = song.duration;
- 	progress.value = song.currentTime;
-
-}
-
-function playPause(){
-	if(ctrlIcon.classList.contains("fa-pause")){
-			song.pause();
-			ctrlIcon.classList.remove("fa-pause");
-			ctrlIcon.classList.add("fa-play");
-		}
-		else{
-			song.play();
-			ctrlIcon.classList.add("fa-pause");
-			ctrlIcon.classList.remove("fa-play");
-		}
-}
-
-if (song.play()) {
-	setInterval(()=>{
-		progress.value = song.currentTime;
-	},500);
-}
-
-progress.onchange = function(){
-	song.play();
-	song.currentTime = progress.value;
-	ctrlIcon.classList.add("fa-pause");
-	ctrlIcon.classList.remove("fa-play");
-}
-
-</script>
 <script src="/service.js"></script>
 
 </body>
